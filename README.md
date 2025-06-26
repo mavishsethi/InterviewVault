@@ -1,12 +1,69 @@
-# React + Vite
+# 🧠 InterviewVault
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+InterviewVault is a full-stack MERN (MongoDB, Express, React, Node.js) web application that helps users log and explore real interview experiences shared by peers. It includes features like filtering, likes, comments, and user authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔐 User authentication (JWT + Google OAuth)
+- 📄 Add, view, and explore interview experiences
+- 🏷️ Filter experiences by company, role, and tags (DSA, HR, System Design, etc.)
+- ❤️ Like and 💬 comment on experiences
+- 📊 Interview rounds and questions breakdown
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🖥️ Tech Stack
+
+- **Frontend:** React.js, TailwindCSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Auth:** JWT, Google OAuth
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/InterviewVault.git
+cd interviewvault
+```
+
+### 2. Install Backend Dependencies
+
+```bash
+cd server
+npm install
+```
+
+### 3. Setup `.env` File
+
+Create a `.env` file in the root 
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
+
+---
+
+### 4. Start Backend Server
+
+```bash
+node server/index.js
+```
+---
+
+### 5. Start Frontend
+
+```bash
+cd client
+npm install
+npm run dev
+```
