@@ -14,7 +14,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  // origin: "http://localhost:5173",
+  origin: process.env.CLIENT_URL,
   credentials: true,
 }));
 app.use(express.json());
@@ -27,6 +28,10 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.get("/", (req, res) => {
+  res.send("InterviewVault API Running");
+});
 
 // Routes
 app.use("/api/auth", authRoutes);
@@ -44,7 +49,8 @@ app.get("/auth/google/callback",
   }),
   (req, res) => {
     const token = generateToken(req.user._id);
-    res.redirect(`http://localhost:5173/explore?token=${token}`);
+    // res.redirect(`http://localhost:5173/explore?token=${token}`);
+    res.redirect(`${process.env.CLIENT_URL}/explore?token=${token}`);
 
 
   }
