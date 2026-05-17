@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import.meta.env.VITE_API_URL
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -9,13 +10,13 @@ const Signup = () => {
   const [password, setPassword] = useState("");
 
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/auth/google";
+    window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`;
   };
 
   const handleSignup = async (e) => {
     e.preventDefault(); // Prevent default form submission
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/signup`, {
         name,
         email,
         password,

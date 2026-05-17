@@ -2,14 +2,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import.meta.env.VITE_API_URL
 const Explore = () => {
 const [experiences, setExperiences] = useState([]);
 const [searchQuery, setSearchQuery] = useState("");
 const [selectedTag, setSelectedTag] = useState("");
 useEffect(() => {
   const fetchExperiences = async () => {
-    const res = await axios.get("http://localhost:5000/api/experience");
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/experience`);
     setExperiences(res.data);
     setFilteredExperiences(res.data);
   };
@@ -33,7 +33,7 @@ const handleTagClick = (tag) => {
   useEffect(() => {
     const fetchExperiences = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/experience");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/experience`);
         setExperiences(res.data);
       } catch (err) {
         console.error("Error fetching experiences", err);

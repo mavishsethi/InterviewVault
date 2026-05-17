@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import.meta.env.VITE_API_URL
 
 const AddExperience = () => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const AddExperience = () => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:5000/api/experience", experienceData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/experience`, experienceData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

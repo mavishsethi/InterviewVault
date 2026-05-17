@@ -2,19 +2,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import.meta.env.VITE_API_URL
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/auth/google"; // Backend OAuth route
+    window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`; // Backend OAuth route
   };
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent form reload
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
         email,
         password,
       });

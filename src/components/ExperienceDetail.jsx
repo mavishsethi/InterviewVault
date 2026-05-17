@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import.meta.env.VITE_API_URL
 
 const ExperienceDetail = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const ExperienceDetail = () => {
 
   const fetchExperience = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/experience/${id}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/experience/${id}`);
       setExperience(res.data);
     } catch (err) {
       console.error("Error fetching experience:", err);
@@ -29,7 +30,7 @@ const ExperienceDetail = () => {
   const handleCommentSubmit = async () => {
     if (!comment.trim()) return;
     try {
-      await axios.post(`http://localhost:5000/api/experience/${id}/comment`, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/experience/${id}/comment`, {
         user: "Anonymous", // Replace with logged-in user's name if available
         text: comment,
       });
@@ -45,7 +46,7 @@ const ExperienceDetail = () => {
   try {
     const token = localStorage.getItem("token");
     const res = await axios.post(
-      `http://localhost:5000/api/experience/${id}/like`,
+      `${import.meta.env.VITE_API_URL}/api/experience/${id}/like`,
       {},
       {
         headers: {
